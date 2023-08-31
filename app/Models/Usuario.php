@@ -21,6 +21,7 @@ class Usuario extends Model
         'remember_token',
     ];
 
+
     public function perfil()
     {
         return $this->hasOne(Perfil::class, 'perfil_usuario', 'id');

@@ -16,7 +16,7 @@ use App\Http\Controllers\UsuarioController;
 */
 Route::get('/usuarios',[UsuarioController::class, 'index'])->name('usuarios.index');
 Route::get('/usuarios/create',[UsuarioController::class, 'create'])->name('usuarios.create');
-Route::post('/usuarios',[UsuarioController::class, 'store'])->name('usuarios.store');
+Route::post('/usuarios/store',[UsuarioController::class, 'store'])->name('usuarios.store');
 
 Route::get('/usuarios/{id}',[UsuarioController::class, 'show'])->name('usuarios.show');
 
