@@ -36,4 +36,26 @@ class UsuarioController extends Controller
         return redirect()->route('usuarios.index');
     }
 
+    public function edit($id)
+    {
+        if (!$usuario = Usuario::find($id))
+            return redirect()->route('usuarios.index');
+
+        return view('usuarios.edit', compact('usuario'));
+    }
+
+    public function update(UsuarioStoreUpdateFormRequest $request, $id)
+    {
+        if (!$usuario = Usuario::find($id))
+            return redirect()->route('usuarios.index');
+
+        $data = $request->only('nome', 'email');
+        if ($request->password)
+            $data['password'] = bcrypt($request->password);
+        $usuario->update($data);
+
+        return redirect()->route('usuarios.index');
+    }
+
+
 }

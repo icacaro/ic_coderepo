@@ -21,7 +21,9 @@ class UsuarioStoreUpdateFormRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        $id = $this->id ?? ''; //bancos como postgres e mysql não aceitam campos nullos, escrevi essa linha para validar que o campo de edição aceite um email repetido se estiver sendo editado pelo próprio usuário
+
+        $rules = [
             'nome' => [
                 'required',
                 'string',
@@ -31,17 +33,28 @@ class UsuarioStoreUpdateFormRequest extends FormRequest
             'email' => [
                 'required',
                 'email',
-                'unique:usuario'
+                "unique:usuario,email,{$id},id" //escrevi essa linha para validar que o campo de edição aceite um email repetido se estiver sendo editado pelo próprio usuário
             ],
             'perfil_usuario'=> [
                 'required'
             ],
 
             'password' => [
-              'required',
-              'min:6',
-              'max:15'
+                'required',
+                'min:6',
+                'max:15'
             ],
         ];
+
+        if ($this->method('PUT')) {
+            $rules['password'] = [
+                'nullable',
+                'min:6',
+                'max:15'
+            ];
+        }
+
+
+        return $rules;
     }
 }
