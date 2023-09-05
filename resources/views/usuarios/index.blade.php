@@ -5,6 +5,10 @@
         Listagem de usuários
         (<a href=" {{ route('usuarios.create') }}"> + </a>)
     </h1>
+<form action="{{ route('usuarios.index') }}" method="get">
+    <input type="text" name="search" placeholder="Pesquisar">
+    <button>Pesquisar</button>
+</form>
 
     <ul>
         {{--    variável $usuarios recebida do controller via compact--}}

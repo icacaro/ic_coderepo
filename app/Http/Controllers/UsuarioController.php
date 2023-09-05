@@ -11,9 +11,17 @@ use Illuminate\Http\Request;
 
 class UsuarioController extends Controller
 {
-    public function index ()
+    public function index (Request $request)
     {
-        $usuarios = Usuario::get();
+        $search = $request->search;
+        $usuarios = Usuario::where(function ($query) use ($search){
+           if($search){
+               $query->where('email', $search);
+               $query->orWhere('nome', 'LIKE', "%{$search}%");
+           }
+        })->get();
+
+//        $usuarios = Usuario::get();
         return view ('usuarios.index', compact('usuarios'));
     }
     public function show ($id)
@@ -56,6 +64,12 @@ class UsuarioController extends Controller
 
         return redirect()->route('usuarios.index');
     }
-
+    public function delete($id)
+    {
+        if(!$usuario = Usuario::find($id))
+            return redirect()->route('usuarios.index');
+        $usuario->delete();
+        return redirect()->route('usuarios.index');
+    }
 
 }

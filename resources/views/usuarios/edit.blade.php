@@ -22,5 +22,12 @@
         </button>
     </form>
     <br>
+    <form action="{{route('usuarios.delete', $usuario->id)}}" method="POST">
+        @method('DELETE')
+        @csrf
+        <button type="submit"> deletar </button>
+    </form>
+    <br>
     <a href="{{ route('usuarios.index') }}">voltar</a>
+
 @endsection

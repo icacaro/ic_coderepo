@@ -14,6 +14,7 @@ use App\Http\Controllers\UsuarioController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::delete('/usuarios/{id}',[UsuarioController::class, 'delete'])->name('usuarios.delete');
 Route::put('/usuarios/{id}',[UsuarioController::class, 'update'])->name('usuarios.update');
 Route::get('/usuarios/{id}/edit',[UsuarioController::class, 'edit'])->name('usuarios.edit');
 Route::get('/usuarios',[UsuarioController::class, 'index'])->name('usuarios.index');
