@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Requests\UsuarioStoreUpdateFormRequest;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -21,7 +22,6 @@ class Usuario extends Model
         'remember_token',
     ];
 
-
     public function perfil()
     {
         return $this->hasOne(Perfil::class, 'perfil_usuario', 'id');
@@ -31,4 +31,24 @@ class Usuario extends Model
     {
         return $this->hasMany(Publicacao::class, 'usuario_id', 'id');
     }
+
+    public static function getUsuarios(string|null $search = '')
+    {
+        //refatoração do PhpStorm
+        return Usuario::where(function ($query) use ($search){
+            if($search){
+                $query->where('email', $search);
+                $query->orWhere('nome', 'LIKE', "%{$search}%");
+            }
+        })->get();
+
+//        $usuarios = $this->where(function ($query) use ($search){
+//            if($search){
+//                $query->where('email', $search);
+//                $query->orWhere('nome', 'LIKE', "%{$search}%");
+//            }
+//        })->get();
+//        return $usuarios;
+    }
+
 }

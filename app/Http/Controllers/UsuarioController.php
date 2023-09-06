@@ -14,14 +14,9 @@ class UsuarioController extends Controller
     public function index (Request $request)
     {
         $search = $request->search;
-        $usuarios = Usuario::where(function ($query) use ($search){
-           if($search){
-               $query->where('email', $search);
-               $query->orWhere('nome', 'LIKE', "%{$search}%");
-           }
-        })->get();
+        $usuarios = Usuario::getUsuarios($search);
 
-//        $usuarios = Usuario::get();
+//      $usuarios = Usuario::get();
         return view ('usuarios.index', compact('usuarios'));
     }
     public function show ($id)
@@ -39,7 +34,7 @@ class UsuarioController extends Controller
     {
         $data = $request->all();
         $data['password'] = bcrypt($request->password);
-        $usuario = Usuario::create($data);
+        Usuario::create($data);
 
         return redirect()->route('usuarios.index');
     }
