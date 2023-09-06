@@ -1,6 +1,6 @@
 
 # Setup Docker Para Projetos Laravel (8, 9 ou 10)
-[Assine a Academy, e Seja VIP!](https://academy.especializati.com.br)
+ao abrir a primeira vez o projeto, é importante observar e configurar o .env e após, docker compose up -d para subir os containers, depois entrar no container app e executar o composer install.
 
 ### Passo a passo
 Clone Repositório
