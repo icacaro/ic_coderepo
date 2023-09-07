@@ -30,6 +30,7 @@ services:
     # db mysql
 
 #    Se estiver dando erro na conexão com o banco utilizando o PHPStorm (DataGrip), basta na tela de parametrização da conexão ao banco clicar em Advanced ->  useSSL (setar como false).
+#    ao fazer a conexão com o banco de dados, é importante conectar a porta 3388, pois é a porta da maquina, que está escutando a porta 3306 do container.
     db:
         image: mysql:5.7.22
         restart: unless-stopped

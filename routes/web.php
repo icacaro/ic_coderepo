@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\PublicacaoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,8 @@ use App\Http\Controllers\UsuarioController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+//rotas de usuarios
 Route::delete('/usuarios/{id}',[UsuarioController::class, 'delete'])->name('usuarios.delete');
 Route::put('/usuarios/{id}',[UsuarioController::class, 'update'])->name('usuarios.update');
 Route::get('/usuarios/{id}/edit',[UsuarioController::class, 'edit'])->name('usuarios.edit');
@@ -22,6 +25,10 @@ Route::get('/usuarios/create',[UsuarioController::class, 'create'])->name('usuar
 Route::post('/usuarios/store',[UsuarioController::class, 'store'])->name('usuarios.store');
 
 Route::get('/usuarios/{id}',[UsuarioController::class, 'show'])->name('usuarios.show');
+
+//rotas de publicacao
+Route::get('/publicacoes',[PublicacaoController::class, 'index'])->name('publicacoes.index');
+
 
 Route::get('/', function () {
     return view('welcome');
