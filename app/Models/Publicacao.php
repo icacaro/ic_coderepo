@@ -11,9 +11,14 @@ class Publicacao extends Model
     use HasFactory;
     protected $fillable = [
       'postagem',
-      'data',
+      'titulo',
       'tipo_publicacao',
       'usuario_id'
+    ];
+
+    protected $attributes = [
+        'tipo_publicacao' => '1',
+        'usuario_id' => '1'
     ];
 
     public function usuario()

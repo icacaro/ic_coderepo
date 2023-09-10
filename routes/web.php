@@ -28,7 +28,10 @@ Route::get('/usuarios/{id}',[UsuarioController::class, 'show'])->name('usuarios.
 
 //rotas de publicacao
 Route::get('/publicacoes',[PublicacaoController::class, 'index'])->name('publicacoes.index');
+Route::get('/publicacoes/create',[PublicacaoController::class, 'create'])->name('publicacoes.create');
+Route::post('/publicacoes/store',[PublicacaoController::class, 'store'])->name('publicacoes.store');
 
+Route::get('/publicacoes/{id}',[PublicacaoController::class, 'show'])->name('publicacoes.show');
 
 Route::get('/', function () {
     return view('welcome');

@@ -54,7 +54,6 @@ class UsuarioStoreUpdateFormRequest extends FormRequest
             ];
         }
 
-
         return $rules;
     }
 }

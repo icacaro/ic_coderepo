@@ -2,7 +2,7 @@
 @section('title', 'Listagem dos usuários')
 @section('content')
     <h1>
-        Publicações
+        Publicações (<a href=" {{ route('publicacoes.create') }}"> + </a>)
     </h1>
     <form action="{{ route('usuarios.index') }}" method="get">
         <input type="text" name="search" placeholder="Pesquisar">
@@ -13,8 +13,9 @@
         {{--    variável $usuarios recebida do controller via compact--}}
         @foreach($publicacoes as $publicacao)
             <li>
-                {{$publicacao->postagem}} -
-                {{$publicacao->data}}
+                {{$publicacao->titulo}} -
+                {{$publicacao->data}} -
+                | <a href="{{ route('publicacoes.show', $publicacao->id)  }}"> Visualizar </a>
             </li>
         @endforeach
     </ul>
