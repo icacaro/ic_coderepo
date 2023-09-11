@@ -32,6 +32,11 @@ class Usuario extends Model
         return $this->hasMany(Publicacao::class, 'usuario_id', 'id');
     }
 
+    public function comentario()
+    {
+        return $this->hasMany(Comentario::class, 'comentario_usuario_id', 'id');
+    }
+
     public static function getUsuarios(string|null $search = '')
     {
         //refatoração do PhpStorm

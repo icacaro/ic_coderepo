@@ -25,6 +25,10 @@ class Publicacao extends Model
     {
         return $this->belongsTo(Usuario::class, 'usuario_id', 'id');
     }
+    public function comentario()
+    {
+        return $this->hasMany(Comentario::class, 'publicacao_id', 'id');
+    }
 
     public static function getPublicacoes(string|null $search = '')
     {
