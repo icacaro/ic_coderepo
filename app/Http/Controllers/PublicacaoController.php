@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PublicacaoStoreUpdateFormRequest;
+use App\Models\Comentario;
 use App\Models\Publicacao;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
@@ -20,9 +21,10 @@ class PublicacaoController extends Controller
     }
     public function show ($id)
     {
+        $comentarios = Comentario::getComentarios($id);
         if (!$publicacao = Publicacao::find($id))
             return redirect()->route('publicacoes.index');
-        return view ('publicacoes.show', compact('publicacao'));
+        return view('publicacoes.show', compact('publicacao', 'comentarios'));
     }
 
     public function create ()

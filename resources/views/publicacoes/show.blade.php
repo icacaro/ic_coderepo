@@ -5,6 +5,18 @@
     <ul>
         <li>{{ $publicacao->postagem }}</li>
         <li>{{ $publicacao->data }}</li>
+        <br>
+        Comentários {{$publicacao->titulo}}
+        @foreach($comentarios as $comentario)
+            @if($comentario !== null)
+                <li>
+                    {{$comentario->descricao}}
+                    {{$comentario->data_comentario}}
+                </li>
+            @else
+                <p>Nenhum comentário.</p>
+            @endif
+        @endforeach
     </ul>
     <a href="{{ route('publicacoes.index') }}">voltar</a>
 @endsection

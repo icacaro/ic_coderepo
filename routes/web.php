@@ -33,6 +33,10 @@ Route::post('/publicacoes/store',[PublicacaoController::class, 'store'])->name('
 
 Route::get('/publicacoes/{id}',[PublicacaoController::class, 'show'])->name('publicacoes.show');
 
+//rotas de comentarios
+Route::get('/publicacoes/{id}/',[PublicacaoController::class, 'show'])->name('publicacoes.show');
+
+
 Route::get('/', function () {
     return view('welcome');
 });

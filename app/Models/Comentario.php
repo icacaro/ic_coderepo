@@ -21,6 +21,10 @@ class Comentario extends Model
         return $this->hasOne(Publicacao::class,'publicacao_id', 'id');
     }
 
-
+    public static function getComentarios ($publicacao_id)
+    {
+        $comentarios = Comentario::find($publicacao_id);
+        return compact('comentarios');
+    }
 }
 
