@@ -23,7 +23,7 @@ class Comentario extends Model
 
     public static function getComentarios ($publicacao_id)
     {
-        $comentarios = Comentario::find($publicacao_id);
+        $comentarios = Comentario::where('publicacao_id', $publicacao_id)->get();
         return compact('comentarios');
     }
 }
