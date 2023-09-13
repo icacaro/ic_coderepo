@@ -1,3 +1,4 @@
+# projeto do curso de desenvolvimento de sistemas para a COP-30
 
 # Setup Docker Para Projetos Laravel (8, 9 ou 10)
 ao abrir a primeira vez o projeto, é importante observar e configurar o .env e após, docker compose up -d para subir os containers, depois entrar no container app e executar o composer install.
