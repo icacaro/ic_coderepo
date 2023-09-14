@@ -8,8 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Comentario extends Model
 {
     use HasFactory;
+    protected $fillable =
+    [
+     'descricao'
+    ];
 
-
+    protected $attributes = [
+        'comentario_usuario_id' => '1',
+    ];
 
     public function usuario()
     {

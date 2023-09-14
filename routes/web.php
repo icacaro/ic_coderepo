@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ComentarioController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UsuarioController;
@@ -33,9 +34,8 @@ Route::post('/publicacoes/store',[PublicacaoController::class, 'store'])->name('
 
 Route::get('/publicacoes/{id}',[PublicacaoController::class, 'show'])->name('publicacoes.show');
 
-//rotas de comentarios
-Route::get('/publicacoes/{id}/',[PublicacaoController::class, 'show'])->name('publicacoes.show');
-
+Route::get('/publicacoes/{id}/comentarios-create',[ComentarioController::class, 'create'])->name('comentarios.create');
+Route::post('/publicacoes/{id}/comentarios-store',[ComentarioController::class, 'store'])->name('comentarios.store');
 
 Route::get('/', function () {
     return view('welcome');

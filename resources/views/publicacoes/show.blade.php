@@ -7,12 +7,12 @@
         <li>{{ $publicacao->data }}</li>
         <br>
         Comentários {{$publicacao->titulo}}
-{{--    $comentarios['comentarios'] as $comentario: neste código, estamos acessando a chave 'comentarios' no array $comentarios para obter a coleção de comentários--}}
+{{--$comentarios['comentarios'] as $comentario: neste código, estamos acessando a chave 'comentarios' no array $comentarios para obter a coleção de comentários--}}
             @if(count($comentarios['comentarios']) > 0)
                 @foreach($comentarios['comentarios'] as $comentario)
                     <li>
                         {{$comentario->descricao}}
-                        {{$comentario->data_comentario}}
+                        {{$comentario->data_comentario}}                        
                     </li>
                 @endforeach
             @else
@@ -20,5 +20,9 @@
             @endif
 
     </ul>
+    <a href="{{ route('comentarios.create', $publicacao->id)  }}"> comentar publicação </a>
+
+    <br>
+
     <a href="{{ route('publicacoes.index') }}">voltar</a>
 @endsection
