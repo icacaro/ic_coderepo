@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('titulo', 255);
             $table->string('postagem', 1000);
+            $table->string('image')->nullable();
             $table->timestamp('data');
             $table->string('tipo_publicacao');
             $table->timestamps();
